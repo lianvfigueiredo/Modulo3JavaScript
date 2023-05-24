@@ -1,0 +1,38 @@
+<style>
+    .container {
+      width: 200px;
+      height: 200px;
+      background-color: lightgray;
+      padding: 20px;
+    }
+  
+    .inner {
+      width: 100px;
+      height: 100px;
+      background-color: gray;
+      margin: 10px;
+    }
+  </style>
+  
+  <div class="container" onmouseleave="handleMouseLeaveContainer()" onmouseout="handleMouseOutContainer()">
+    <div class="inner" onmouseleave="handleMouseLeaveInner()" onmouseout="handleMouseOutInner()"></div>
+  </div>
+  
+  <script>
+    function handleMouseLeaveContainer() {
+      console.log("Mouse leave container");
+    }
+  
+    function handleMouseOutContainer() {
+      console.log("Mouse out container");
+    }
+  
+    function handleMouseLeaveInner() {
+      console.log("Mouse leave inner");
+    }
+  
+    function handleMouseOutInner() {
+      console.log("Mouse out inner");
+    }
+  </script>
+  

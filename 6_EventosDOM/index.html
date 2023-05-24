@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos DOM</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        #principal{
+            background-color: green;
+            text-align: center;
+            padding: 100px;
+            
+        }
+    </style>
+</head>
+<body>
+    <div id="principal" onclick="changecolor()" onmouseenter="entrou()" onmouseleave="saiu()">
+        Essa é a minha div
+    </div>
+</body>
+</html>
+<script>
+    function changecolor(){
+        // console.log(window.getComputedStyle(principal).getPropertyValue(backgroundColor))
+        console.log(window.getComputedStyle(principal).backgroundColor)
+        if(window.getComputedStyle(principal).backgroundColor == 'rgb(0, 128, 0)'){
+            principal.style.backgroundColor = 'red'
+            principal.innerText = 'clicou e ficou vermelho'
+            principal.style.color = 'blue'
+        }else{
+            console.log(window.getComputedStyle(principal).backgroundColor)
+            principal.style.backgroundColor = 'green'
+            principal.innerText = 'clicou e ficou verde'
+            principal.style.color = 'red'
+        }
+    }
+    var x
+    function entrou(){
+        x = window.getComputedStyle(principal).backgroundColor
+        principal.style.backgroundColor = 'purple'
+    }
+    function saiu(){
+        principal.style.backgroundColor = 'rgb(0, 128, 0)'
+    }
+</script>

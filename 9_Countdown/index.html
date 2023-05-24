@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body{
+            background-color: rgb(48, 48, 48);
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        header h1{
+            text-align: center;
+            color: white;
+            font-size: 60px;
+            margin-top: 15px;
+        }
+        main{
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-rows: 160px;
+            grid-template-columns: repeat(4, 1fr);
+            
+            justify-content: space-evenly;
+        }
+        
+        #logo{
+            
+        }
+        img{
+            position: absolute;
+            top: 10px;
+            width: 100px;
+            height: 100px;
+        }
+        .time{
+            color: white;
+            font-family:Verdana, Geneva, Tahoma, sans-serif;
+            text-align: center;
+            
+        }
+        .time h1{
+            font-size: 60px;
+            margin: 10px;
+        }
+        .time p{
+            margin-top: 15px;
+            font-size: 30px
+        }
+    </style>
+</head>
+<body>
+    <header> 
+        <img src="OIG.jpeg">
+        <h1>Count Down</h1>
+    </header>
+   
+    <main>
+        <div class="time">
+            <h1 id="dias">00</h1>
+            <p>Dias</p>
+        </div>
+        <div class="time">
+            <h1 id="horas">00</h1>
+            <p>Horas</p>
+        </div>
+        <div class="time">
+            <h1 id="minutos">00</h1>
+            <p>Minutos</p>
+        </div>
+        <div class="time" >
+            <h1 id="segundos">00</h1>
+            <p>Segundos</p>
+        </div>
+    </main>
+</body>
+</html>
+
+<script>
+    const aniversario = new Date("20 jul 2023")
+    function countdown(){
+    const hoje = new Date()
+    const segundos = Math.floor((aniversario - hoje)/1000)
+    document.getElementById("segundos").innerHTML = formatoTempo((segundos % 60))
+    document.getElementById("minutos").innerHTML = formatoTempo((Math.floor(segundos/60) % 60))
+    document.getElementById("horas").innerHTML = formatoTempo((Math.floor(segundos/3600) % 24))
+    document.getElementById("dias").innerHTML = formatoTempo((Math.floor(segundos/86400)))
+    console.log("funfando")
+    }
+    setInterval(countdown, 1000)
+
+    function formatoTempo(tempo){
+        return tempo <10 ? `0${tempo}` : tempo
+    }
+    
+</script>
