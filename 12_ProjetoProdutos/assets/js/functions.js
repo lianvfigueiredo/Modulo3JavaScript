@@ -1,14 +1,8 @@
     let produtos = []
     let i = 0
-
-    function adicionar(a, b){
-        const produto = new Produto(i, a, b)
-        i++
-        produtos.push(produto)
-        listar()
-        cancelar()
-    }
-
+    let add = document.getElementById("adicionar")
+    let cancel = document.getElementById("cancelar")
+    
     function listar(){
         let l = document.getElementsByClassName("product")
         for(let j = l.length-1; j >= 0; j--){
@@ -17,40 +11,35 @@
 
         for(let j = 0; j < i; j++){
             if(produtos[j] != undefined){
-                let div = document.createElement("div")
+                const div = document.createElement("div")
                 div.classList.add("table2", "product")
                 div.setAttribute("id", j)
-                elemento(produtos[j].getId()+1, div)
-                elemento(produtos[j].getNome(), div)
-                elemento(produtos[j].getValor(), div)
-                imagem(j, div)
+
+                div.innerHTML = `
+                    <p>${produtos[j].getId()+1}</p>      
+                    <p>${produtos[j].getNome()}</p>
+                    <p>${produtos[j].getValor()}</p>
+                    <p class="p_img">
+                        <a><img src="assets/images/lixeira.png" class="img" id="${j}" onclick="remover(${j})"</a>
+                    </p>
+                    `
                 tablemax.appendChild(div)
             }
-        }
-        
+        }   
     }
 
-    function elemento(attrb, div){
-        let x = document.createElement("p");
-        x.innerText = `${attrb}`
-        div.appendChild(x)
+    add.addEventListener("click", adicionar)
+    function adicionar(){
+        let nome_produto = document.getElementById("nome_produto").value
+        let valor_produto = document.getElementById("valor_produto").value
+        const produto = new Produto(i, nome_produto, valor_produto)
+        i++
+        produtos.push(produto)
+        listar()
+        cancelar()
     }
 
-    function imagem(j, div){
-        let img = document.createElement("img")
-        img.src = "assets/images/lixeira.png"
-        img.classList.add("img")
-        img.setAttribute("id", j)
-        img.onclick = () => {remover(j)}
-        
-        let x = document.createElement("a")
-        x.appendChild(img)
-        let y = document.createElement("p")
-        y.classList.add("p_img")
-        y.appendChild(x)
-        div.appendChild(y)
-    }
-
+    cancel.addEventListener("click", cancelar)
     function cancelar(){
         document.getElementById("nome_produto").value = ""
         document.getElementById("valor_produto").value = ""
@@ -76,7 +65,4 @@
         getValor(){
             return this.Valor
         }
-        // toString(){
-        //     return `Id = ${this.getId()}, Nome = ${this.getNome()}, Valor = ${this.getValor()}`
-        // }
     }
