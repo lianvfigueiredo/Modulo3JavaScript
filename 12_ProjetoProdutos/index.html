@@ -16,7 +16,7 @@
     <main>
         <h2>Produtos</h2>
         <p id="list">Lista de Produtos</p>
-        <div id="table">
+        <div id="form">
             <label>Produto</label>
             <input id="nome_produto" placeholder="Nome do Produto" type="text" required>
 
@@ -29,16 +29,19 @@
             </div>
         </div>
   
-        <div id="tablemax">
-            <div class="table2 head">
-                <p>ID</p>
-                <p>Produto</p>
-                <p>Valor</p>
-                <p>Editar</p>
-            </div>
-        </div>
+        <table id="tablemax">
+            <thead>
+                <tr class="table2">
+                    <th>ID</th>
+                    <th>Produto</th>
+                    <th>Valor</th>
+                    <th>Editar</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
     </main>
 </body>
 </html>
 
-<script src="assets/js/functions.js"></script>
+<script src="assets/js/test.js"></script>
